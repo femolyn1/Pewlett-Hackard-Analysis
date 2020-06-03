@@ -217,6 +217,40 @@ ON (de.dept_no = d.dept_no)
 WHERE d.dept_name IN ('Sales','Development');
 
 
-
+--CHALLENGE QTN1 HOW MANY EMPLOYEES ARE RETIREMENT READY BASED ON JOB TITLE
+SELECT emp_info.emp_no,
+emp_info.first_name,
+	emp_info.last_name,
+titles.title,
+titles.from_date,
+emp_info.salary
+INTO retirement_title
+FROM emp_info 
+INNER JOIN titles 
+ON (emp_info.emp_no = titles.emp_no);
+SELECT * FROM retirement_title;
+  
+ -- PARTITION THE DATA TO SHOW ONLY MOST RECENT TITLE PER EMPLOYEE 
+SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+ from_date,
+ salary
+INTO title_per_emp
+FROM
+ (SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+  from_date,
+ salary, ROW_NUMBER() OVER
+ (PARTITION BY (emp_no)
+ ORDER BY from_date DESC) rn
+ FROM retirement_title
+ ) tmp WHERE rn = 1
+ORDER BY emp_no;
+ --To check table with most recent title
+ SELECT* FROM title_per_emp;
  
 
