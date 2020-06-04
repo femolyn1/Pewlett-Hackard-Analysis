@@ -1,21 +1,21 @@
---TO DETERMINE ELIGIBILITY FOR RETIREMENT- OUTPUT IS A LAUNDRY LIST
+--MODULE PRACTICE :TO DETERMINE ELIGIBILITY FOR RETIREMENT- OUTPUT IS A LAUNDRY LIST
 SELECT first_name, last_name
 FROM employees
 WHERE birth_date BETWEEN '1952-01-01' AND '1952-12-31';
-
+--MODULE PRACTICE
 SELECT first_name, last_name
 FROM employees
 WHERE birth_date BETWEEN '1953-01-01' AND '1953-12-31';
-
+--MODULE PRACTICE
 SELECT first_name, last_name
 FROM employees
 WHERE birth_date BETWEEN '1954-01-01' AND '1954-12-31';
-
+--MODULE PRACTICE
 SELECT first_name, last_name
 FROM employees
 WHERE birth_date BETWEEN '1955-01-01' AND '1955-12-31';
 
--- Retirement eligibility-Adjsuting the code to narrow down the search to those who were employed btw 1952 -1955 and hired btw 1985 to 1988
+-- Retirement eligibility-Adjusting the code to narrow down the search to those who were employed btw 1952 -1955 and hired btw 1985 to 1988
 SELECT first_name, last_name
 FROM employees
 WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
@@ -24,26 +24,25 @@ AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
 -- Number of employees retiring
 SELECT COUNT(first_name)
 FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+WHERE (birth_date BETWEEN '1952-01-01' AND '1965-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
 
 --TO CREATE A NEW TABLE named retirement_info. 
 SELECT first_name, last_name
-INTO retirement_info
+--INTO retirement_info
 FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+WHERE (birth_date BETWEEN '1952-01-01' AND '1965-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
-
-DROP TABLE retirement_info;
 
 -- Create new table for retiring employees
 SELECT emp_no, first_name, last_name
 INTO retirement_info
 FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+WHERE (birth_date BETWEEN '1952-01-01' AND '1965-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+
 -- Check the table
-SELECT * FROM dept_emp;
+SELECT * FROM retirement_info ;
 
 -- Joining departments and dept_manager tables
 SELECT departments.dept_name,
@@ -54,7 +53,7 @@ FROM departments
 INNER JOIN dept_manager
 ON departments.dept_no = dept_manager.dept_no;
 
-SELECT * FROM retirement_info;
+
 
 -- Joining retirement_info and dept_emp tables
 SELECT retirement_info.emp_no,
@@ -75,7 +74,7 @@ LEFT JOIN dept_emp as de
 ON ri.emp_no = de.emp_no;
 
 
--- Joining departments and dept_manager tables- We will rewrite code bwlow
+-- Joining departments and dept_manager tables- We will rewrite code below
 SELECT departments.dept_name,
      dept_manager.emp_no,
      dept_manager.from_date,
@@ -92,6 +91,7 @@ SELECT d.dept_name,
 FROM departments as d
 INNER JOIN dept_manager as dm
 ON d.dept_no = dm.dept_no;
+
 --Code to join the retirement info with the dept emp
 SELECT ri.emp_no,
 	ri.first_name,
@@ -102,8 +102,7 @@ FROM retirement_info as ri
 LEFT JOIN dept_emp as de
 ON ri.emp_no = de.emp_no
 WHERE de.to_date = ('9999-01-01');
---To check table
-SELECT * FROM dept_emp;
+
 
 -- Employee count by department number
 SELECT COUNT(ce.emp_no), de.dept_no
@@ -112,35 +111,29 @@ LEFT JOIN dept_emp as de
 ON ce.emp_no = de.emp_no
 GROUP BY de.dept_no;
 
--- Employee count by department number --using order function to order the table
+-- Employee count by department number using order function to order the table
 SELECT COUNT(ce.emp_no), de.dept_no
-INTO employee_cnt_by_dept
+--INTO employee_cnt_by_dept
 FROM current_emp as ce
 LEFT JOIN dept_emp as de
 ON ce.emp_no = de.emp_no
 GROUP BY de.dept_no
 ORDER BY de.dept_no;
 
-
-
 --To reoder the table
 SELECT * FROM salaries
 ORDER BY to_date DESC;
 
-SELECT emp_no, first_name, last_name
-INTO retirement_info
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
---Adding gender column and saving into a new folder named emp_info- This gives us the list of employees with requested info
+--Adding gender column and saving into a new folder named emp_info- This gives us the list of employees within the date range
 SELECT emp_no,
 	first_name,
 last_name,
 	gender
-INTO emp_info
+--INTO emp_info
 FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+WHERE (birth_date BETWEEN '1952-01-01' AND '1965-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+
 --JOINING ABOVE TO SALARY TABLE TO ADD THE TO_ DATE INFO
 SELECT e.emp_no,
 	e.first_name,
@@ -154,9 +147,10 @@ INNER JOIN salaries as s
 ON (e.emp_no = s.emp_no)
 INNER JOIN dept_emp as de
 ON (e.emp_no = de.emp_no)
-WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1965-12-31')
      AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
  AND (de.to_date = '9999-01-01');
+ 
  
  -- List of managers per department
 SELECT  dm.dept_no,
@@ -172,9 +166,7 @@ FROM dept_manager AS dm
         ON (dm.dept_no = d.dept_no)
     INNER JOIN current_emp AS ce
         ON (dm.emp_no = ce.emp_no);
-		
-SELECT * FROM retirement_info;		
-		
+	
 --Department Retirees		
 
 SELECT ce.emp_no,
@@ -203,12 +195,12 @@ ON (de.dept_no = d.dept_no)
 WHERE (d.dept_name ='Sales');
 
 
- --Table showing devpt team info
+ --Table showing Sales & Devpt team info
  SELECT ri.emp_no,
 ri.first_name,
 ri.last_name,
 d.dept_name
-INTO Sales_dev_info
+INTO sales_dev_info
 FROM retirement_info as ri
 INNER JOIN dept_emp AS de
 ON (ri.emp_no = de.emp_no)
@@ -216,8 +208,8 @@ INNER JOIN departments AS d
 ON (de.dept_no = d.dept_no)
 WHERE d.dept_name IN ('Sales','Development');
 
-
---CHALLENGE QTN1 HOW MANY EMPLOYEES ARE RETIREMENT READY BASED ON JOB TITLE
+--TABLE 1
+--CHALLENGE QUESTION 1 -Table showing the number of retirement ready employees by titles
 SELECT emp_info.emp_no,
 emp_info.first_name,
 	emp_info.last_name,
@@ -227,17 +219,16 @@ emp_info.salary
 INTO retirement_title
 FROM emp_info 
 INNER JOIN titles 
-ON (emp_info.emp_no = titles.emp_no);
-SELECT * FROM retirement_title;
-  
- -- PARTITION THE DATA TO SHOW ONLY MOST RECENT TITLE PER EMPLOYEE 
+ON (emp_info.emp_no = titles.emp_no)
+ORDER BY emp_info.emp_no;
+-- To partition the above data to remove duplicates and show only the most recent title per employee
 SELECT emp_no,
  first_name,
  last_name,
  title,
  from_date,
  salary
-INTO title_per_emp
+INTO emp_titles
 FROM
  (SELECT emp_no,
  first_name,
@@ -250,7 +241,45 @@ FROM
  FROM retirement_title
  ) tmp WHERE rn = 1
 ORDER BY emp_no;
- --To check table with most recent title
- SELECT* FROM title_per_emp;
+--To check table created from above query
+ SELECT * FROM emp_titles;
  
+---TABLE 2
+--CHALLENGE QUESTION 2: A table containing number of employees who are eligible for the mentorship program
+SELECT employees.emp_no,
+	employees.first_name,
+employees.last_name,
+emp_titles.title,
+	emp_titles.from_date,
+	titles.to_date
+INTO ment_emp
+FROM employees 
+INNER JOIN emp_titles
+ON (employees.emp_no = emp_titles.emp_no)
+INNER JOIN titles
+ON (employees.emp_no = titles.emp_no)
+WHERE (employees.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY to_date DESC;
+-- To partition the above data to remove duplicates
+SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+ from_date,
+ to_date
+INTO ment_eligible
+FROM
+ (SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+  from_date,
+ to_date, ROW_NUMBER() OVER
+ (PARTITION BY (emp_no)
+ ORDER BY to_date DESC) rn
+ FROM ment_emp
+ ) tmp WHERE rn = 1
+ORDER BY emp_no;
+--To check table created from above query
 
+SELECT * FROM ment_eligible;
