@@ -210,17 +210,17 @@ WHERE d.dept_name IN ('Sales','Development');
 
 --TABLE 1
 --CHALLENGE QUESTION 1 -Table showing the number of retirement ready employees by titles
-SELECT emp_info.emp_no,
-emp_info.first_name,
-	emp_info.last_name,
-titles.title,
-titles.from_date,
-emp_info.salary
+SELECT ei.emp_no,
+ei.first_name,
+	ei.last_name,
+tt.title,
+tt.from_date,
+ei.salary
 INTO retirement_title
-FROM emp_info 
-INNER JOIN titles 
-ON (emp_info.emp_no = titles.emp_no)
-ORDER BY emp_info.emp_no;
+FROM emp_info as ei
+INNER JOIN titles as tt 
+ON (ei.emp_no = tt.emp_no)
+ORDER BY ei.emp_no;
 -- To partition the above data to remove duplicates and show only the most recent title per employee
 SELECT emp_no,
  first_name,
@@ -246,19 +246,19 @@ ORDER BY emp_no;
  
 ---TABLE 2
 --CHALLENGE QUESTION 2: A table containing number of employees who are eligible for the mentorship program
-SELECT employees.emp_no,
-	employees.first_name,
-employees.last_name,
-emp_titles.title,
-	emp_titles.from_date,
-	titles.to_date
+SELECT e.emp_no,
+	e.first_name,
+e.last_name,
+et.title,
+	et.from_date,
+	tt.to_date
 INTO ment_emp
-FROM employees 
-INNER JOIN emp_titles
-ON (employees.emp_no = emp_titles.emp_no)
-INNER JOIN titles
-ON (employees.emp_no = titles.emp_no)
-WHERE (employees.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+FROM employees as e 
+INNER JOIN emp_titles as et
+ON (e.emp_no = et.emp_no)
+INNER JOIN titles as tt
+ON (e.emp_no = tt.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY to_date DESC;
 -- To partition the above data to remove duplicates
 SELECT emp_no,
