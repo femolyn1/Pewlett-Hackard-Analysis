@@ -6,6 +6,8 @@ The purpose of this analysis is to determine the total number of employees who w
 
 # Analysis
 
+Entity Relationship Diagram:
 ![](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/master/Module%207%20Challenge/ERD.png)
 
+A total of nine csv files were used for this analysis. Six of these files were imported to SQL data base while the remaining three were created from existing data.  As shown in the entity relationship di 
 
