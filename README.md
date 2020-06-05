@@ -1,4 +1,4 @@
-# Pewlett-Hackard-Analysis
+  Pewlett-Hackard-Analysis
 The purpose of this analysis is to determine the total number of employees who will be retiring soon and identify those who are eligible to participate in a mentorship program. This analyis is a proactive step to future proof the staff strenghth of Pewlett Hackard. As part of this exercise, we created an employee data base using SQL to determine the following:
 *  Number of individuals retiring
 *  Number of individulas the company will need to hire
@@ -14,5 +14,5 @@ As shown in the above ERD, a total of nine csv files were used for this analysis
 The employment information (emp_info)  contains a list of employees who are ready for retirement and still within the payroll of the company. The input of this table as shown in the ERD includes the Employee table, Salaries table and Dep_emp table all of which were joined togehther the using inner join method.  
 
 ### Employment by title ( emp_titles) table:
-This table shows the number of current employees who are about to retire by job title. It was created using an inner join to join the employment information and titles
+This table shows the number of current employees who are about to retire by job title. It was created using an inner join to connect the employment information ,and titles tables. Duplicate information was removed using the partitioning method. After removing the duplicates, a total of 108,958 employees was observed. This is the total number of employees within the age 
 
