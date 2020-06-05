@@ -6,5 +6,6 @@ The purpose of this analysis is to determine the total number of employees who w
 
 # Analysis
 
+![](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/master/Module%207%20Challenge/ERD.png)
 
 
