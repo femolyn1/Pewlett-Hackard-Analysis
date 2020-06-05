@@ -27,6 +27,6 @@ We observed the following from the analysis:
 * Total of 131,166 individuals will need to be hired.
 * Total of 691 individuals are available for the mentorship role.
 
-The obtained number of people being hired is very subjective as 
+The obtained number of people being hired is very subjective because the to date colunm in the salaries table is inaccurate. Also, information about the number 
 
 
