@@ -14,5 +14,5 @@ As shown in the above ERD, a total of nine csv files were used for this analysis
 The employment information (emp_info)  contains a list of employees who are ready for retirement and still within the payroll of the company. The input of this table as shown in the ERD includes the Employee table, Salaries table and Dep_emp table all of which were joined togehther the using inner join method.  
 
 ### Employment by title ( emp_titles) table:
-This table shows the number of current employees who are about to retire by job title. It was created using an inner join to join the employment information and 
+This table shows the number of current employees who are about to retire by job title. It was created using an inner join to join the employment information and titles
 
