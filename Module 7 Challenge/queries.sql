@@ -197,6 +197,7 @@ SELECT e.emp_no,
 	e.first_name,
 e.last_name,
 	e.gender,
+     e.hire_date,
 	s.salary,
 	de.to_date
 INTO emp_info
