@@ -92,6 +92,7 @@ FROM
 ORDER BY emp_no;
 
 
+
 ---CODE TO DETERMINE THE NUMBER OF PEOPLE BEING HIRED
 SELECT e.emp_no,
 	e.first_name,
@@ -100,8 +101,6 @@ e.last_name,
      e.hire_date,
 	de.to_date
 	FROM employees as e
-INNER JOIN salaries as s
-ON (e.emp_no = s.emp_no)
 INNER JOIN dept_emp as de
 ON (e.emp_no = de.emp_no)
 WHERE (de.to_date = '9999-01-01');
