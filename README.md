@@ -1,7 +1,7 @@
   Pewlett-Hackard-Analysis
 The purpose of this analysis is to determine the total number of employees who will be retiring soon and identify those who are eligible to participate in a mentorship program. This analyis is a proactive step to future proof the staff strenghth of Pewlett Hackard. As part of this exercise, we created an employee data base using SQL to determine the following:
 *  Number of individuals retiring
-*  Number of individulas the company will need to hire
+*  Number of individuals being hired
 * Number of individuals available for the mentorship role
 
 # Analysis
@@ -17,6 +17,16 @@ The employment information (emp_info)  contains a list of employees who are read
 This table shows the number of current employees who are about to retire by job title. It was created using an inner join to connect the employment information table and titles table. Duplicate information was removed using the partitioning method. After removing the duplicates, a total of 108,958 employees was observed. It is worth noting that we filtered the birth date range to fall between January 1952 and December 1965 and the hire date was also adjusted to fall between January 1985 and December 1988 for the purpose of this calculation. The birth date was expanded to December 1965 in order to be able to determine the number of employees among the list who will be eligible for the mentorship program.  This information provides an insight to the number of employees the company whose positions will soon be vacant .So the company is in a better position to plan for the exit of these individuals. 
 
 ### Mentorship Eligible ( ment_eligible):
-As shown in the above ERD, this table was created using two inner joins to link three tables. The tables include Employees, emp_titles and titles tables.  
+As shown in the above ERD, this table was created using two inner joins to link three tables. The tables include Employees, emp_titles and titles tables. The table was also partitioned to remove duplicates. A count of the rows revealed a total of 691 mentorship eligible employees. 
+
+### Number of individuals the company will need to hire
+A total of 131,166 positions will soon be available within the company. This information was obtained by creating a temporary table which links the employees and salaries table using an inner join with the to_date filtered to 9999-01-01 to ensure all individuals captured are currently employed in the company. A count of the total employees obtained from this analysis shows a total of 240,124 individuals This number was then deducted from the total employees who are ready for retirement, 108,958 (obtained from emp_titles table). 
+# Summary
+We observed the following from the analysis:
+* Total of 108,958 current employees are ready for retirement. 
+* Total of 131,166 individuals will need to be hired.
+* Total of 691 individuals are available for the mentorship role.
+
+The obtained number of people being hired is very subjective as 
 
 
