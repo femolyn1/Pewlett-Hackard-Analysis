@@ -150,7 +150,8 @@ ON (e.emp_no = de.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1965-12-31')
      AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
  AND (de.to_date = '9999-01-01');
- 
+
+SELECT * FROM emp_info;
  
  -- List of managers per department
 SELECT  dm.dept_no,
@@ -280,6 +281,5 @@ FROM
  FROM ment_emp
  ) tmp WHERE rn = 1
 ORDER BY emp_no;
---To check table created from above query
 
-SELECT * FROM ment_eligible;
+
