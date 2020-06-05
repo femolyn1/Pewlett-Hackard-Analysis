@@ -134,40 +134,7 @@ FROM employees
 WHERE (birth_date BETWEEN '1952-01-01' AND '1965-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
 
---JOINING ABOVE TO SALARY TABLE TO ADD THE TO_ DATE INFORMATION
-SELECT e.emp_no,
-	e.first_name,
-e.last_name,
-	e.gender,
-	s.salary,
-	de.to_date
-INTO emp_info
-FROM employees as e
-INNER JOIN salaries as s
-ON (e.emp_no = s.emp_no)
-INNER JOIN dept_emp as de
-ON (e.emp_no = de.emp_no)
-WHERE (e.birth_date BETWEEN '1952-01-01' AND '1965-12-31')
-     AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
- AND (de.to_date = '9999-01-01');
 
-SELECT * FROM emp_info;
- 
- -- List of managers per department
-SELECT  dm.dept_no,
-        d.dept_name,
-        dm.emp_no,
-        ce.last_name,
-        ce.first_name,
-        dm.from_date,
-        dm.to_date
-INTO manager_info
-FROM dept_manager AS dm
-    INNER JOIN departments AS d
-        ON (dm.dept_no = d.dept_no)
-    INNER JOIN current_emp AS ce
-        ON (dm.emp_no = ce.emp_no);
-	
 --Department Retirees		
 
 SELECT ce.emp_no,
@@ -209,7 +176,43 @@ INNER JOIN departments AS d
 ON (de.dept_no = d.dept_no)
 WHERE d.dept_name IN ('Sales','Development');
 
---TABLE 1
+ -- List of managers per department
+SELECT  dm.dept_no,
+        d.dept_name,
+        dm.emp_no,
+        ce.last_name,
+        ce.first_name,
+        dm.from_date,
+        dm.to_date
+INTO manager_info
+FROM dept_manager AS dm
+    INNER JOIN departments AS d
+        ON (dm.dept_no = d.dept_no)
+    INNER JOIN current_emp AS ce
+        ON (dm.emp_no = ce.emp_no);
+
+
+--EMPLOYMENT INFORMATION TABLE (emp_info)
+SELECT e.emp_no,
+	e.first_name,
+e.last_name,
+	e.gender,
+     e.hire_date,
+	s.salary,
+	de.to_date
+INTO emp_info
+FROM employees as e
+INNER JOIN salaries as s
+ON (e.emp_no = s.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1965-12-31')
+     AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+ AND (de.to_date = '9999-01-01');
+
+SELECT * FROM emp_info;
+ 
+
 --CHALLENGE QUESTION 1 -Table showing the number of retirement ready employees by titles
 SELECT ei.emp_no,
 ei.first_name,
