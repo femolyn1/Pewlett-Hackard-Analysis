@@ -20,14 +20,14 @@ This table shows the number of current employees who are about to retire by job 
 As shown in the above ERD, this table was created using two inner joins to link three tables. The tables include Employees, emp_titles and titles tables. The table was also partitioned to remove duplicates. A count of the rows revealed a total of 691 mentorship eligible employees. 
 
 ### Number of individuals the company will need to hire
-A total of 131,166 positions will soon be available within the company. This information was obtained by creating a [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/890ca3e15857fff00a0030caf41792497fdc0719/Module%207%20Challenge/queries_challenge.sql#L95) which links the employees and salaries table using an inner join with the to_date filtered to 9999-01-01 to ensure all individuals captured are currently employed in the company. A count of the total employees obtained from this analysis shows a total of 240,124 individuals This number was then deducted from the total employees who are ready for retirement, 108,958 (obtained from emp_titles table). 
+A total of 131,166 positions will soon be available within the company. This information was obtained by creating a [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/25d96dee2758f87e2ecee7e258cf547cdac39bc5/Module%207%20Challenge/queries_challenge.sql#L95) which links the employees and salaries table using an inner join with the to_date filtered to 9999-01-01 to ensure all individuals captured are currently employed in the company. A count of the total employees obtained from this analysis shows a total of 240,124 individuals This number was then deducted from the total employees who are ready for retirement, 108,958 (obtained from emp_titles table). 
 # Summary
 We observed the following from the analysis:
 * Total of 108,958 current employees are ready for retirement. 
 * Total of 131,166 individuals will need to be hired.
 * Total of 691 individuals are available for the mentorship role.
 
-The obtained number of people being hired is very subjective because the to date colunm in the salaries table is inaccurate. Also, the total number of employee obtained from the last [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/890ca3e15857fff00a0030caf41792497fdc0719/Module%207%20Challenge/queries_challenge.sql#L95) created was not filtered for duplicates. 
+The obtained number of people being hired is very subjective because the to date colunm in the salaries table is inaccurate. Also, the total number of employee obtained from the last [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/25d96dee2758f87e2ecee7e258cf547cdac39bc5/Module%207%20Challenge/queries_challenge.sql#L95) created was not filtered for duplicates. 
 ## Suggestion
 The company's salaries csv data should be updated with accurate "to_date" information. We can then create a table showing the total employees 
 
