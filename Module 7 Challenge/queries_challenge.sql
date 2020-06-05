@@ -98,7 +98,7 @@ SELECT e.emp_no,
 e.last_name,
 	e.gender,
      e.hire_date,
-	s.salary
+	de.to_date
 	FROM employees as e
 INNER JOIN salaries as s
 ON (e.emp_no = s.emp_no)
