@@ -27,6 +27,8 @@ We observed the following from the analysis:
 * Total of 131,166 individuals will need to be hired.
 * Total of 691 individuals are available for the mentorship role.
 
-The obtained number of people being hired is very subjective because the to date colunm in the salaries table is inaccurate. Also, the total number of employee obtained from the last [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/890ca3e15857fff00a0030caf41792497fdc0719/Module%207%20Challenge/queries_challenge.sql#L95) created 
+The obtained number of people being hired is very subjective because the to date colunm in the salaries table is inaccurate. Also, the total number of employee obtained from the last [code](https://github.com/femolyn1/Pewlett-Hackard-Analysis/blob/890ca3e15857fff00a0030caf41792497fdc0719/Module%207%20Challenge/queries_challenge.sql#L95) created was not filtered for duplicates. 
+## Suggestion
+The company's salaries csv data should be updated with accurate "to_date" information. We can then create a table showing the total employees 
 
 
