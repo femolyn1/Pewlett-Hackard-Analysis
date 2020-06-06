@@ -1,5 +1,5 @@
 # Pewlett-Hackard-Analysis
-The purpose of this analysis is to determine the total number of employees who will be retiring soon and identify those who are eligible to participate in a mentorship program. This analyis is a proactive step to future proof the staff strenghth of Pewlett Hackard. As part of this exercise, we created an employee data base using SQL to determine the following:
+The purpose of this analysis is to determine the total number of employees who will be retiring soon and identify those who are eligible to participate in a mentorship program. This analyis is a proactive step to future proof the staff strenghth of Pewlett Hackard. As part of this exercise, we created an employee data base using SQL and were able to determine the following:
 *  Number of individuals retiring
 *  Number of individuals being hired
 * Number of individuals available for the mentorship role
